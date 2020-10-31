@@ -1,0 +1,110 @@
+* Theme setup -
+** Gtk theme setup
+   As we are focusing on Xfce4 desktop, we have at least 3 major places to
+   change for themes - 
+   1. Gtk theme
+   2. Window manager theme
+   3. Icon theme
+   To apply these, use the following commands -
+*** Gtk theme commands
+    #+BEGIN_SRC shell
+      xfconf-query -c xsettings -p "/Net/ThemeName" -s <theme>
+    #+END_SRC
+
+*** Window manager theme commands
+    #+BEGIN_SRC  shell
+      xfconf-query -c xfwm4 -p "/general/theme" -s <theme>
+    #+END_SRC 
+
+*** Window manager theme commands
+    #+BEGIN_SRC shell
+      xfconf-query -c xsettings -p "/Net/IconThemeName" -s <theme>
+    #+END_SRC
+
+    It may be needed to change the panel size to allow proper icon
+    sizes in the taskbar/panel. Command for that is -
+    #+BEGIN_SRC  shell
+      xfconf-query -c xfce4-panel -p "/panels/panel-1/size" -s <size>
+    #+END_SRC
+
+** Upload Xfwm4 Win10 themes to git
+** Qt theme setup -
+   - Gtk theme is automatically applied (qt5ct)
+   - To change icon theme use the following command -
+     #+BEGIN_SRC  shell
+       sed -i 's%icon_theme=\(.*\)%icon_theme=McMojave-circle%g' ~/.config/qt5ct/qt5ct.conf
+     #+END_SRC
+
+** From official repo -
+   - materia-gtk-theme
+** Downloaded themes -
+   - McHigh Sierra :: Gtk theme
+     - Link - [[https://www.gnome-look.org/p/1013714/][Gnome-look]]
+   - McMojave-circle :: Icon theme
+     - Link - [[https://www.opendesktop.org/p/1305429/][Opendesktop]]
+   - Windows XP (Luna) :: Gtk theme
+     - Link - [[https://github.com/B00merang-Project/Windows-XP][Boomerang Project]]
+   - Windows XP (Icon) :: Icon theme
+     - Link - [[https://github.com/B00merang-Artwork/Windows-XP][Boomerang Artwork]]
+   - Windows 7 :: Gtk theme
+     - Link - [[https://github.com/B00merang-Artwork/Windows-7][Boomerang Project]]
+   - Windows 7 :: Icon theme
+     - Link - [[https://github.com/B00merang-Artwork/Windows-7][Boomerang Artwork]]
+   - Windows 7 :: XFWM4 theme
+     - Link - [[https://www.xfce-look.org/p/1016331/][Xfce Look]]
+   - Win 95 :: Everything
+     - Link - [[https://github.com/grassmunk/Chicago95][grassmunk]]
+   - Windows 10 :: Gtk theme
+     - Link - (light) [[https://github.com/B00merang-Project/Windows-10][Boomerang Project]]
+     - Link - (dark) [[https://github.com/B00merang-Project/Windows-10-Dark][Boomerang Project]]
+   - Windows 10 :: Icon theme
+     - Link - (light) [[https://github.com/B00merang-Artwork/Windows-10][Boomerang Artwork]]
+     - Link - (dark) [[https://github.com/B00merang-Artwork/Windows-10-Dark][Boomerang Artwork]]
+   - Adwaita++ :: Icon theme
+     - Link - [[https://www.gnome-look.org/s/Gnome/p/1302858][Gnome Look]]
+** Theme collection -
+   1. Mac Like theme 
+      1. light
+         - Theme :: Sierra-light
+         - Icon :: McMojave-circle
+         - WM Theme :: Sierra-light
+      2. dark
+         - Theme :: Sierra-dark
+         - Icon :: McMojave-circle-dark
+         - WM Theme :: Sierra-dark
+   2. Win XP Like theme
+      1. default
+         - Theme :: Windows XP Luna
+         - Icon :: Windows-XP
+         - WM Theme :: Windows XP Luna
+   3. Win 7 Like theme
+      1. default
+         - Theme :: Windows-7
+         - Icon :: Windows-7
+         - WM Theme :: X-Aero GTK3
+   4. Win 95 Like theme
+      1. default
+         - Theme :: Chicago95
+         - Icon :: Chicago95
+         - WM Theme :: Chicago95
+         - Panel Height(size) :: 44
+   5. Win 10 Like theme
+      1. light
+         - Theme :: Windows-10-3.2
+         - Icon :: Windows-10-1.0
+         - WM Theme :: Win10-Light
+      2. dark
+         - Theme :: Windows-10-Dark-3.2-dark
+         - Icon :: Windows-10-1.0
+         - WM Theme :: Win10-Dark
+   6. Default theme
+      1. light
+         - Theme :: Materia-compact 
+         - Icon :: Adwaita++
+         - WM Theme :: Materia-compact
+      2. dark
+         - Theme :: Materia-dark-compact
+         - Icon :: Adwaita++-Dark
+         - WM Theme :: Materia-dark-compact
+** DONE Add the themes to EasyArch iso config
+** DONE Create pkgbuild for this project

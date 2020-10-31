@@ -1,0 +1,25 @@
+* Welcome Screen Application
+  This repository has the source code, images, ui layout for the
+  welcome screen application of EasyArch system. The main purposes of 
+  this application are -
+
+  - Allow user to set his desktop layout and theme
+  - Present some useful links
+  - Greet user
+
+** Requirements
+   - Python 3.5 or higher
+   - PyGObject package
+   - Gtk 3 libraries
+
+** Editor/IDE setup
+   - Build and install [[https://github.com/Microsoft/python-language-server][Microsoft Python Language Server]]. This requires
+     dotnetcore to compile and build.
+   - In the virtual environment install -
+     #+BEGIN_SRC shell
+       pip install 'python-language-server[all]'
+     #+END_SRC
+
+** Useful links
+   - [[https://git.xfce.org/xfce/xfce4-panel/tree/libxfce4panel/libxfce4panel-enums.h#n80][Xfce4 Screen Positions]]
+   - [[https://pygobject.readthedocs.io/en/latest/getting_started.html][PyGObject]]

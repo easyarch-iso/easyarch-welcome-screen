@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Hidden=false
+Terminal=false
+TryExec=welcome-screen
+Exec=welcome-screen
+Icon=welcome-screen
+Categories=Settings;DesktopSettings;X-XFCE-SettingsDialog;X-XFCE-PersonalSettings;
+Name[en_US]=EasyArch Config
+Comment[en_US]=Setup system layout and theme

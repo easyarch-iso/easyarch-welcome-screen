@@ -1,0 +1,741 @@
+<?xml version="1.0" encoding ="UTF-8"?>
+
+<!--
+Welcome screen layout for EasyArch.
+
+Copyright (C) 2020 Asif Mahmud Shimon
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with
+this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+Place, Suite 330, Boston, MA 02111-1307 USA
+-->
+
+<interface>
+
+  <!-- window:extra_objects -->
+  <!-- left_nav_btn_icon -->
+  <object class="GtkImage" id="left_nav_btn_icon">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="icon-size">1</property>
+    <property name="icon-name">go-previous</property>
+  </object>
+  <!-- right_nav_btn_icon -->
+  <object class="GtkImage" id="right_nav_btn_icon">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="icon-size">1</property>
+    <property name="icon-name">go-next</property>
+  </object>
+
+  <object class="GtkApplicationWindow" id="window" >
+
+    <!-- window:properties -->
+    <property name="show-menubar">False</property>
+    <property name="default-width">600</property>
+    <property name="default-height">400</property>
+
+    <!-- window:signals -->
+    <signal name="destroy" handler="on_window_destroy" swapped="no"/>
+
+    <!-- window:layout -->
+    <!-- headerbar -->
+    <child type="titlebar">
+      <object class="GtkHeaderBar" id="headerbar">
+
+        <!-- headerbar:properties -->
+        <property name="title">UiTest Window</property>
+        <property name="show-close-button">True</property>
+
+
+        <!-- headerbar:layout  -->
+        <!-- left_nav_btn -->
+        <child>
+          <object class="GtkButton" id="left_nav_btn">
+
+            <!-- left_nav_btn:properties -->
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">Prev</property>
+            <property name="always-show-image">True</property>
+            <property name="image-position">0</property>
+            <property name="image">left_nav_btn_icon</property>
+            <property name="name">left_nav_btn</property>
+
+            <!-- left_nav_btn:signals -->
+            <signal name="clicked" handler="on_left_nav_btn_clicked" swapped="no"/>
+
+          </object>
+
+          <!-- left_nav_btn:packing -->
+          <packing>
+            <property name="pack-type">start</property>
+            <property name="position">1</property>
+          </packing>
+          <!-- left_nav_btn:packing -->
+
+        </child>
+        <!-- left_nav_btn -->
+
+        <!-- right_nav_btn -->
+        <child>
+          <object class="GtkButton" id="right_nav_btn">
+
+            <!-- right_nav_btn:properties -->
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">Next</property>
+            <property name="always-show-image">True</property>
+            <property name="image-position">1</property>
+            <property name="image">right_nav_btn_icon</property>
+
+            <!-- right_nav_btn:signals -->
+            <signal name="clicked" handler="on_right_nav_btn_clicked" swapped="no"/>
+
+          </object>
+
+          <!-- right_nav_btn:packing -->
+          <packing>
+            <property name="pack-type">end</property>
+            <property name="position">1</property>
+          </packing>
+          <!-- right_nav_btn:packing -->
+
+        </child>
+        <!-- right_nav_btn -->
+        <!-- headerbar:layout -->
+
+      </object>
+    </child>
+    <!-- headerbar -->
+
+
+    <!-- stack -->
+    <child>
+      <object class="GtkStack" id="stack">
+
+        <!-- stack:properties -->
+        <property name="transition-type">6</property>
+        <property name="transition-duration">500</property>
+
+        <!-- stack:signals -->
+
+        <!-- stack:pages -->
+        <!-- layout_page -->
+        <child>
+          <object class="GtkGrid" id="layout_page">
+
+            <!-- layout_page:properties -->
+            <property name="border-width">10</property>
+            <property name="row-spacing">10</property>
+            <property name="column-spacing">10</property>
+            <property name="column-homogeneous">True</property>
+            <property name="row-homogeneous">True</property>
+
+            <!-- layout_page:signals -->
+            <signal name="map" handler="on_page_map" swapped="no"/>
+
+            <!-- layout_page:layout -->
+            <!-- layout_bh_btn -->
+            <child>
+
+              <object class="GtkButton" id="layout_bh_btn">
+
+                <!-- layout_bh_btn:properties -->
+                <property name="name">bottom_horizontal</property>
+
+                <!-- layout_bh_btn:signals -->
+                <signal name="clicked" handler="on_layout_btn_clicked" swapped="no"/>
+
+                <!-- layout_bh_btn_img -->
+                <child>
+                  <object class="GtkVBox">
+                    <child>
+                      <object class="GtkDrawingArea" id="layout_bh_btn_img">
+                        <!-- layout_bh_btn_img:signals -->
+                        <signal name="draw" handler="on_layout_bh_btn_img_draw" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+                <!-- layout_bh_btn_img -->
+
+              </object>
+
+              <!-- layout_bh_btn:packing -->
+              <packing>
+                <property name="left-attach">0</property>
+                <property name="top-attach">0</property>
+                <property name="width">1</property>
+                <property name="height">1</property>
+              </packing>
+              <!-- layout_bh_btn:packing -->
+
+            </child>
+            <!-- layout_bh_btn -->
+
+            <!-- layout_th_btn -->
+            <child>
+
+              <object class="GtkButton" id="layout_th_btn">
+
+                <!-- layout_th_btn:properties -->
+                <property name="name">top_horizontal</property>
+
+                <!-- layout_th_btn:signals -->
+                <signal name="clicked" handler="on_layout_btn_clicked" swapped="no"/>
+
+                <!-- layout_th_btn_img -->
+                <child>
+                  <object class="GtkVBox">
+                    <child>
+                      <object class="GtkDrawingArea" id="layout_th_btn_img">
+                        <!-- layout_th_btn_img:signals -->
+                        <signal name="draw" handler="on_layout_th_btn_img_draw" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+                <!-- layout_th_btn_img -->
+
+              </object>
+
+              <!-- layout_th_btn:packing -->
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">0</property>
+                <property name="width">1</property>
+                <property name="height">1</property>
+              </packing>
+              <!-- layout_th_btn:packing -->
+
+            </child>
+            <!-- layout_th_btn -->
+
+            <!-- layout_lv_btn -->
+            <child>
+
+              <object class="GtkButton" id="layout_lv_btn">
+
+                <!-- layout_lv_btn:properties -->
+                <property name="name">left_vertical</property>
+
+                <!-- layout_lv_btn:signals -->
+                <signal name="clicked" handler="on_layout_btn_clicked" swapped="no"/>
+
+                <!-- layout_lv_btn_img -->
+                <child>
+                  <object class="GtkVBox">
+                    <child>
+                      <object class="GtkDrawingArea" id="layout_lv_btn_img">
+                        <!-- layout_lv_btn_img:signals -->
+                        <signal name="draw" handler="on_layout_lv_btn_img_draw" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+                <!-- layout_lv_btn_img -->
+
+              </object>
+
+              <!-- layout_lv_btn:packing -->
+              <packing>
+                <property name="left-attach">0</property>
+                <property name="top-attach">1</property>
+                <property name="width">1</property>
+                <property name="height">1</property>
+              </packing>
+              <!-- layout_lv_btn:packing -->
+
+            </child>
+            <!-- layout_lv_btn -->
+
+            <!-- layout_rv_btn -->
+            <child>
+
+              <object class="GtkButton" id="layout_rv_btn">
+
+                <!-- layout_rv_btn:properties -->
+                <property name="name">right_vertical</property>
+
+                <!-- layout_rv_btn:signals -->
+                <signal name="clicked" handler="on_layout_btn_clicked" swapped="no"/>
+
+                <!-- layout_rv_btn_img -->
+                <child>
+                  <object class="GtkVBox">
+                    <child>
+                      <object class="GtkDrawingArea" id="layout_rv_btn_img">
+                        <!-- layout_rv_btn_img:signals -->
+                        <signal name="draw" handler="on_layout_rv_btn_img_draw" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+                <!-- layout_rv_btn_img -->
+
+              </object>
+
+              <!-- layout_rv_btn:packing -->
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">1</property>
+                <property name="width">1</property>
+                <property name="height">1</property>
+              </packing>
+              <!-- layout_rv_btn:packing -->
+
+            </child>
+            <!-- layout_rv_btn -->
+
+            <!-- layout_page:layout -->
+
+          </object>
+
+          <!-- layout_page:packing -->
+          <packing>
+            <property name="name">layout_page</property>
+          </packing>
+          <!-- layout_page:packing -->
+
+        </child>
+        <!-- layout_page -->
+
+        <!-- theme_page -->
+        <child>
+          <object class="GtkVBox" id="theme_page">
+
+            <!-- theme_page:properties -->
+
+
+            <!-- theme_page:signals -->
+            <signal name="map" handler="on_page_map" swapped="no"/>
+
+            <!-- theme_page:layout -->
+
+            <child>
+
+              <!-- inner_vbox -->
+              <object class="GtkVBox">
+                <property name="halign">3</property>
+                <property name="valign">3</property>
+                <property name="hexpand">False</property>
+                <property name="vexpand">True</property>
+
+
+                <!-- prefer_dark_theme_check -->
+                <child>
+                  <object class="GtkCheckButton" id="prefer_dark_theme_check">
+
+                    <!-- prefer_dark_theme_check:properties -->
+                    <property name="label">Prefer dark variant (if available)</property>
+                    <property name="halign">3</property>
+                    <property name="margin-bottom">20</property>
+
+                    <!-- prefer_dark_theme_check:signals -->
+                    <signal name="toggled"
+                            handler="on_prefer_dark_theme_check_toggled" swapped="no" />
+
+                  </object>
+                </child>
+                <!-- prefer_dark_theme_check -->
+
+                <!-- default_theme_choice -->
+                <child>
+                  <object class="GtkRadioButton" id="default_theme_choice">
+
+                    <!-- default_theme_choice:properties -->
+                    <property name="label">Default Theme</property>
+                    <property name="name">default_theme</property>
+
+                    <!-- default_theme_choice:signals -->
+                    <signal name="toggled"
+                            handler="on_theme_choice_changed" swapped="no"/>
+
+
+                  </object>
+
+                  <!-- default_theme_choice:packing -->
+                  <packing>
+                    <property name="fill">False</property>
+                  </packing>
+                  <!-- default_theme_choice:packing -->
+
+                </child>
+                <!-- default_theme_choice -->
+
+                <!-- win10_theme_choice -->
+                <child>
+                  <object class="GtkRadioButton" id="win10_theme_choice">
+
+                    <!-- win10_theme_choice:properties -->
+                    <property name="label">Windows 10 Like Theme</property>
+                    <property name="group">default_theme_choice</property>
+                    <property name="name">win10_theme</property>
+
+                    <!-- win10_theme_choice:signals -->
+                    <signal name="toggled"
+                            handler="on_theme_choice_changed" swapped="no"/>
+
+                  </object>
+
+                  <!-- win10_theme_choice:packing -->
+                  <packing>
+                    <property name="fill">False</property>
+                  </packing>
+                  <!-- win10_theme_choice:packing -->
+
+                </child>
+                <!-- win10_theme_choice -->
+
+                <!-- win7_theme_choice -->
+                <child>
+                  <object class="GtkRadioButton" id="win7_theme_choice">
+
+                    <!-- win7_theme_choice:properties -->
+                    <property name="label">Windows 7 Like Theme</property>
+                    <property name="group">default_theme_choice</property>
+                    <property name="name">win7_theme</property>
+
+                    <!-- win7_theme_choice:signals -->
+                    <signal name="toggled"
+                            handler="on_theme_choice_changed" swapped="no"/>
+
+                  </object>
+
+                  <!-- win7_theme_choice:packing -->
+                  <packing>
+                    <property name="fill">False</property>
+                  </packing>
+                  <!-- win7_theme_choice:packing -->
+
+                </child>
+                <!-- win7_theme_choice -->
+
+                <!-- winxp_theme_choice -->
+                <child>
+                  <object class="GtkRadioButton" id="winxp_theme_choice">
+
+                    <!-- winxp_theme_choice:properties -->
+                    <property name="label">Windows XP Like Theme</property>
+                    <property name="group">default_theme_choice</property>
+                    <property name="name">winxp_theme</property>
+
+                    <!-- winxp_theme_choice:signals -->
+                    <signal name="toggled"
+                            handler="on_theme_choice_changed" swapped="no"/>
+
+                  </object>
+
+                  <!-- winxp_theme_choice:packing -->
+                  <packing>
+                    <property name="fill">False</property>
+                  </packing>
+                  <!-- winxp_theme_choice:packing -->
+
+                </child>
+                <!-- winxp_theme_choice -->
+
+                <!-- win95_theme_choice -->
+                <child>
+                  <object class="GtkRadioButton" id="win95_theme_choice">
+
+                    <!-- win95_theme_choice:properties -->
+                    <property name="label">Windows 95 Like Theme</property>
+                    <property name="group">default_theme_choice</property>
+                    <property name="name">win95_theme</property>
+
+                    <!-- win95_theme_choice:signals -->
+                    <signal name="toggled"
+                            handler="on_theme_choice_changed" swapped="no"/>
+
+                  </object>
+
+                  <!-- win95_theme_choice:packing -->
+                  <packing>
+                    <property name="fill">False</property>
+                  </packing>
+                  <!-- win95_theme_choice:packing -->
+
+                </child>
+                <!-- win95_theme_choice -->
+
+                <!-- mac_theme_choice -->
+                <child>
+                  <object class="GtkRadioButton" id="mac_theme_choice">
+
+                    <!-- mac_theme_choice:properties -->
+                    <property name="label">Mac OS Like Theme</property>
+                    <property name="group">default_theme_choice</property>
+                    <property name="name">mac_theme</property>
+
+                    <!-- mac_theme_choice:signals -->
+                    <signal name="toggled"
+                            handler="on_theme_choice_changed" swapped="no"/>
+
+                  </object>
+
+                  <!-- mac_theme_choice:packing -->
+                  <packing>
+                    <property name="fill">False</property>
+                  </packing>
+                  <!-- mac_theme_choice:packing -->
+
+                </child>
+                <!-- mac_theme_choice -->
+
+              </object>
+
+              <!-- inner_vbox:packing -->
+              <packing>
+                <property name="fill">True</property>
+              </packing>
+              <!-- inner_vbox:packing -->
+
+            </child>
+            <!-- inner_vbox -->
+            <!-- theme_page:layout -->
+
+          </object>
+
+          <!-- theme_page:packing -->
+          <packing>
+            <property name="name">theme_page</property>
+          </packing>
+          <!-- theme_page:packing -->
+
+        </child>
+        <!-- theme_page -->
+
+
+        <!-- welcome_page -->
+        <child>
+          <object class="GtkVBox" id="welcome_page">
+
+            <!-- welcome_page:properties -->
+
+            <!-- welcome_page:signals -->
+            <signal name="map" handler="on_page_map" swapped="no"/>
+
+            <!-- welcome_page:layout -->
+            <!-- inner_vbox -->
+            <child>
+              <object class="GtkVBox">
+                <!-- inner_vbox:properties -->
+                <property name="halign">3</property>
+                <property name="valign">3</property>
+
+
+                <!-- archlinux_logo -->
+                <child>
+                  <object class="GtkImage" id="archlinux_logo_img">
+
+                    <!-- archlinux_logo:properties -->
+                    <property name="halign">3</property>
+                    <property name="valign">3</property>
+                    <property name="margin-bottom">20</property>
+                  </object>
+                </child>
+                <!-- archlinux_logo -->
+
+                <!-- welcome_label -->
+                <child>
+                  <object class="GtkLabel" id="welcome_label">
+                    <!-- welcome_label:properties -->
+                    <property name="halign">3</property>
+                    <property name="valign">3</property>
+                    <property name="justify">2</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Sans 18"/>
+                      <attribute name="foreground" value="#3276BC"/>
+                    </attributes>
+                  </object>
+                </child>
+                <!-- welcome_label -->
+
+
+                <!-- welcome_sublabel -->
+                <child>
+                  <object class="GtkLabel" id="welcome_sublabel">
+                    <!-- welcome_sublabel:properties -->
+                    <property name="halign">3</property>
+                    <property name="valign">3</property>
+                    <property name="wrap">True</property>
+                    <property name="justify">2</property>
+                    <property name="margin-bottom">20</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Sans 12"/>
+                    </attributes>
+                  </object>
+                </child>
+                <!-- welcome_sublabel -->
+
+                <!-- useful_links_label -->
+                <child>
+                  <object class="GtkLabel" id="useful_links_label">
+                    <!-- useful_links_label:properties -->
+                    <property name="label">Some useful links-</property>
+                    <property name="halign">3</property>
+                    <property name="valign">3</property>
+                    <property name="wrap">True</property>
+                    <property name="justify">2</property>
+                    <property name="margin-bottom">10</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Sans 12"/>
+                    </attributes>
+                  </object>
+                </child>
+                <!-- useful_links_label -->
+
+                <!-- link_button_grid -->
+                <child>
+                  <object class="GtkGrid">
+
+                    <!-- link_button_grid:properties -->
+                    <property name="column-homogeneous">True</property>
+                    <property name="row-homogeneous">True</property>
+                    <property name="column-spacing">10</property>
+                    <property name="row-spacing">10</property>
+
+                    <!-- archlinux_website_link -->
+                    <child>
+                      <object class="GtkLinkButton">
+                        <!-- archlinux_website_link:properties -->
+                        <property name="label">Archlinux Website</property>
+                        <property name="uri">https://www.archlinux.org/</property>
+                        <property name="halign">3</property>
+                        <property name="valign">3</property>
+                      </object>
+
+                      <!-- archlinux_website_link:packing -->
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">0</property>
+                        <property name="width">1</property>
+                        <property name="height">1</property>
+                      </packing>
+                      <!-- archlinux_website_link:packing -->
+                    </child>
+                    <!-- archlinux_website_link -->
+
+                    <!-- archlinux_wiki_link -->
+                    <child>
+                      <object class="GtkLinkButton">
+                        <!-- archlinux_wiki_link:properties -->
+                        <property name="label">Archlinux Wiki</property>
+                        <property name="uri">https://wiki.archlinux.org/</property>
+                        <property name="halign">3</property>
+                        <property name="valign">3</property>
+                      </object>
+
+                      <!-- archlinux_wiki_link:packing -->
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">0</property>
+                        <property name="width">1</property>
+                        <property name="height">1</property>
+                      </packing>
+                      <!-- archlinux_wiki_link:packing -->
+                    </child>
+                    <!-- archlinux_wiki_link -->
+
+                    <!-- archlinux_forum_link -->
+                    <child>
+                      <object class="GtkLinkButton">
+                        <!-- archlinux_forum_link:properties -->
+                        <property name="label">Archlinux Forum</property>
+                        <property name="uri">https://bbs.archlinux.org/</property>
+                        <property name="halign">3</property>
+                        <property name="valign">3</property>
+                      </object>
+
+                      <!-- archlinux_forum_link:packing -->
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">1</property>
+                        <property name="width">1</property>
+                        <property name="height">1</property>
+                      </packing>
+                      <!-- archlinux_forum_link:pac -->
+                    </child>
+                    <!-- archlinux_forum_link -->
+
+                    <!-- archlinux_reddit_link -->
+                    <child>
+                      <object class="GtkLinkButton">
+                        <!-- archlinux_reddit_link:properties -->
+                        <property name="label">Archlinux Reddit</property>
+                        <property name="uri">https://www.reddit.com/r/archlinux/</property>
+                        <property name="halign">3</property>
+                        <property name="valign">3</property>
+                      </object>
+
+                      <!-- archlinux_reddit_link:packing -->
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">1</property>
+                        <property name="width">1</property>
+                        <property name="height">1</property>
+                      </packing>
+                      <!-- archlinux_reddit_link:pac -->
+                    </child>
+                    <!-- archlinux_reddit_link -->
+
+                  </object>
+                </child>
+                <!-- link_button_grid -->
+
+              </object>
+
+              <!-- inner_vbox:packing -->
+              <packing>
+                <property name="fill">False</property>
+              </packing>
+              <!-- inner_vbox:packing -->
+            </child>
+            <!-- inner_vbox -->
+            <!-- welcome_page:layout -->
+
+          </object>
+
+          <!-- welcome_page:packing -->
+          <packing>
+            <property name="name">welcome_page</property>
+          </packing>
+          <!-- welcome_page:packing -->
+
+        </child>
+        <!-- welcome_page -->
+
+      </object>
+    </child>
+    <!-- stack -->
+
+    <!-- window:layout -->
+
+  </object>
+
+</interface>
